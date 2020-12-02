@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def read_data(path):
     """ Reads puzzle input """
     with open(path, 'r') as f:
