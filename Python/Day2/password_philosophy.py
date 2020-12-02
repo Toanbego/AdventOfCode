@@ -7,28 +7,6 @@ def read_data(path):
     return data
 
 
-# def define_password_policy(inputs):
-#     """ Creates a dict with passwords as keys, and policy as value pair"""
-#     data = {}
-#     counter = 0
-#     for element in inputs:
-#
-#         # Extract dict values
-#         instances_lower, instances_upper = element.split(" ")[0].split("-")[0], element.split(" ")[0].split("-")[1]
-#         letter = element.split(" ")[1][0]
-#         password = element.split(" ")[2]
-#
-#         # Format dict
-#         data[password] = {}
-#         data[password]['lower'] = int(instances_lower)
-#         data[password]['upper'] = int(instances_upper)
-#         data[password]['letter'] = letter
-#         counter += 1
-#     print(counter)
-#     print(len(data))
-#
-#     return data
-
 def define_password_policy(inputs):
     """ Creates a dict with passwords as keys, and policy as value pair"""
     data = []
@@ -43,8 +21,6 @@ def define_password_policy(inputs):
         # Format dict
         data.append([password, nr1, nr2, letter])
         counter += 1
-    print(counter)
-    print(len(data))
 
     return data
 
