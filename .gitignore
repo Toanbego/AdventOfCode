@@ -1,0 +1,4 @@
+node_modules
+.history
+yarn.lock
+javascript_starterkit/*
