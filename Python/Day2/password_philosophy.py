@@ -52,7 +52,7 @@ def check_second_password_policy(passwords):
 if __name__ == '__main__':
 
     puzzle_input = read_data("puzzle_input.txt")
-    # puzzle_input = ['1-3 a: abcde', '1-3 b: cdefg', '2-9 c: ccccccccc']
+
     puzzle_input = define_password_policy(puzzle_input)
 
     valid_checks = check_first_password_policy(puzzle_input)
