@@ -16,7 +16,6 @@ class ProcessPassport:
         self.passport = passport
 
     def check_byr(self):
-        """ Checks for correct birth year data """
         data_field = re.findall(r'byr:([0-9]{4})', self.passport)
         return True if 1920 <= int(data_field[0]) <= 2002 else False
 
@@ -29,7 +28,6 @@ class ProcessPassport:
         return True if 2020 <= int(data_field[0]) <= 2030 else False
 
     def check_hgt(self):
-        """ Checks for correct height data """
         data_field = re.findall(r'hgt:([0-9]*)([cmin]{2})', self.passport)
         if len(data_field) > 0:
             if data_field[0][1] == 'cm':
@@ -47,8 +45,7 @@ class ProcessPassport:
     def check_ecl(self):
         data_field = re.findall(r'ecl:([a-z]{3})', self.passport)
         if len(data_field) > 0:
-            valid_color = ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
-            if data_field[0] in valid_color:
+            if data_field[0] in ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']:
                 return True
         return False
 
@@ -103,4 +100,4 @@ if __name__ == '__main__':
     process_passport(data)
 
 
-    
+
