@@ -40,7 +40,9 @@ def count_trees_in_path(toboggan_map, path=(3, 1)):
 
     return tree_count
 
+
 if __name__ == '__main__':
+
     puzzle_input = read_data('puzzle_input.txt')
     puzzle_input = format_data(puzzle_input)
 

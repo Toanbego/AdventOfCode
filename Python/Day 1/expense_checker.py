@@ -38,6 +38,7 @@ if __name__ == '__main__':
     print(f'{nr1} + {nr2} = {(nr1 + nr2)}')
     print(f'Multiplying numbers: {nr1} * {nr2} = {nr1 * nr2}')
 
+
     # Task 2
     nr1, nr2, nr3 = three_sum_problem(puzzle_input, goal=2020)
     print("\nSolving the Three Sum Problem")
