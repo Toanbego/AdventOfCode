@@ -1,5 +1,6 @@
-import math
+
 import numpy as np
+
 
 def read_data(path='puzzle_input.txt'):
     """ Reads puzzle input """
@@ -51,10 +52,10 @@ def get_column(seating_id):
 def find_missing_number(numbers):
     """ Checks for missing numbers in a list of numbers. Returns the first missing number it finds"""
     numbers = np.sort(np.array(numbers).astype(int))
-    for i, number in enumerate(numbers[1:]):
-        diff = number - numbers[i]
+    for idx, number in enumerate(numbers[1:]):
+        diff = number - numbers[idx]
         if diff != 1:
-            return numbers[i]+1
+            return numbers[idx]+1
 
 
 if __name__ == '__main__':
