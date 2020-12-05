@@ -10,10 +10,10 @@ def read_data(path):
 
 def format_data(data):
     """
-    Formats puzzle input into an array of True False.
+    Formats puzzle input into an array of True/False.
     True = Tree
     False = Clear path
-    :param data:
+    :param data: List of data points as read from read_data()
     :return:
     """
     return np.array([np.array(list(line)) == '#' for line in data])
@@ -27,16 +27,21 @@ def count_trees_in_path(toboggan_map, path=(3, 1)):
     :return:
     """
     tree_count = 0
-    position = [0, 0]
-    map_length_east = len(toboggan_map[0])
-    map_length_south = len(toboggan_map)
+    x_position = 0
+    y_position = 0
+    map_length_x = len(toboggan_map[0])
+    map_length_y = len(toboggan_map)
 
-    while position[0] < map_length_south:
+    # Traverse downhill
+    while y_position < map_length_y:
 
-        if toboggan_map[position[0]][position[1]]:
+        # If the element at the position is True, there is a tree there.
+        if toboggan_map[y_position][x_position]:
             tree_count += 1
 
-        position = [position[0] + path[1], (position[1] + path[0]) % map_length_east]
+        # Update position. If x position is at the "end of array", reset it to left side again
+        y_position += path[1]
+        x_position = (x_position + path[0]) % map_length_x
 
     return tree_count
 
