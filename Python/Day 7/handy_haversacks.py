@@ -1,6 +1,7 @@
 import re
 
 
+
 from collections import *
 from functools import lru_cache
 import heapq
@@ -33,9 +34,7 @@ def main2():
             if x not in s:
                 q.append(x)
                 s.add(x)
-    openssl
-    s_client - connect
-    {server}: {port}
+
     print("part 1", len(s) - 1)
 
     @lru_cache()
@@ -50,13 +49,11 @@ def main2():
 
 
 
-
 def read_data(path="puzzle_input.txt"):
     """ Reads puzzle input """
     with open(path, 'r') as f:
         data = f.read().split('\n')
     return data
-
 
 def create_graph(rules):
     graph = defaultdict(list)
@@ -84,10 +81,11 @@ def solve_graph(rule):
 
 def main():
     puzzle_input = read_data()
+
     puzzle_input = create_graph(puzzle_input)
     bag_count = 0
 
-main2()
+
 main()
 
 
