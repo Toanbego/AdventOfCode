@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5190eacc-196e-4c9b-8ba7-5b7c7f850bce" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Day 2/.idea/Day2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day 2/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day 2/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day 2/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day 2/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day 2/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day 7/handy_haversacks.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day 7/puzzle_input.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Day 2/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/password_philosophy.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Day 2/password_philosophy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/puzzle_input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Day 2/puzzle_input.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day3/puzzle_input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Day 3/puzzle_input.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day3/toboggan_trajectory.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Day 3/toboggan_trajectory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../python_resource/adventofcode" beforeDir="false" afterPath="$PROJECT_DIR$/../../python_resource/adventofcode" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1lCQg0A6JdQYvsSNE8z9zXz9U8f" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5190eacc-196e-4c9b-8ba7-5b7c7f850bce" name="Default Changelist" comment="" />
+      <created>1607098700645</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607098700645</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="613" y="290" key="FileChooserDialogImpl" timestamp="1607325691708">
+      <screen x="0" y="0" width="1664" height="1069" />
+    </state>
+    <state x="613" y="290" key="FileChooserDialogImpl/0.0.1664.1069@0.0.1664.1069" timestamp="1607325691708" />
+  </component>
+</project>
