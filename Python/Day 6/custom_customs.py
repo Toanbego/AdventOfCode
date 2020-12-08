@@ -7,8 +7,8 @@ def read_data(path='puzzle_input.txt'):
         data = f.read().split('\n\n')
     return data
 
-def find_duplicates_in_group(p):
 
+def find_duplicates_in_group(p):
     result = set(p[0])
     for s in p[1:]:
         result.intersection_update(s)
