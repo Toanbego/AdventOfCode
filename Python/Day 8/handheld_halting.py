@@ -16,7 +16,6 @@ class AdventGameBoy():
         self.current_acceleration = 0
         self.memory = []
 
-
     def find_jump_codes(self):
         """ Find indexes of jmps and nops"""
         codes_idx = []
