@@ -21,9 +21,8 @@ def find_invalid_number(code, start, end):
 
         # Sum every two number in preamble and check for invalid number
         for idx, i in enumerate(preamble):
-            for j in preamble[idx + 1:]:
-                if i + j == number:
-                    is_number_valid = True
+            if number - i in preamble:
+                is_number_valid = True
 
         # If none of summed preamble numbers was equal to number, return the number
         if not is_number_valid:
@@ -84,5 +83,3 @@ def main():
 
 
 main()
-
-
