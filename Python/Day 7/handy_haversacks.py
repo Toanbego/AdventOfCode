@@ -39,8 +39,8 @@ def create_graph_with_count(lines):
             continue
 
         top_bag, bags = rule.split(" contain ")
-        # graph[top_bag] = [(int(v.split()[0]), tuple(v.split()[1:-1])) for v in vs.split(", ")]
         top_bag = tuple(top_bag.split(" ")[0:2])
+
         for bag in bags.split(", "):
             count, adjective, color = tuple(bag.split(" ")[0:3])
             bag = (int(count), (adjective, color))
