@@ -7,7 +7,7 @@ def read_data(path="puzzle_input.txt"):
     return lines
 
 
-class AdventGameBoy():
+class AdventGameBoy:
 
     def __init__(self, input_code):
         self.input_code = [[line.split(" ")[0], int(line.split(" ")[1])] for line in input_code]
@@ -91,6 +91,7 @@ class AdventGameBoy():
 
 
 def main():
+
     puzzle_input = read_data()
     console = AdventGameBoy(input_code=puzzle_input)
 
