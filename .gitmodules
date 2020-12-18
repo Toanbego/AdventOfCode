@@ -1,6 +1,3 @@
 [submodule "javascript_starterkit/aoc-starter-js"]
 	path = javascript_starterkit/aoc-starter-js
 	url = https://github.com/caderek/aoc-starter-js.git
-[submodule "python_resource/adventofcode"]
-	path = python_resource/adventofcode
-	url = https://github.com/AlexeSimon/adventofcode.git
