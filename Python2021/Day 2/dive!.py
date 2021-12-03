@@ -22,8 +22,6 @@ def task1(data):
     return final_horizontal * final_depth
 
 
-
-
 def task2(data):
     """Write the code for task 2 here"""
     final_depth, final_horizontal, aim = 0, 0, 0

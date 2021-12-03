@@ -12,7 +12,6 @@ def task1(data):
     """Write the code for task 1 here"""
 
 
-
 def task2(data):
     """Write the code for task 2 here"""
 
