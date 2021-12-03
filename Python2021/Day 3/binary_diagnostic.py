@@ -35,10 +35,11 @@ def task2(data):
     oxygen_generator_rating, CO2_scrubber_rating = deepcopy(binary_array), deepcopy(binary_array)
     sequence_length = len(binary_array[0])
     binary_length = len(binary_array.transpose()[0])
-    i = 0
 
+    i = 0
     while(True):
         if binary_length == 1:
+            i = 0
             binary_length = len(binary_array.transpose()[0])
             break
 
@@ -57,7 +58,7 @@ def task2(data):
         else:
             i += 1
 
-    i = 0
+
     while(True):
         if binary_length == 1:
             break
