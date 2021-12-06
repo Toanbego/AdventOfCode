@@ -18,9 +18,11 @@ def calculate_lifesupport(binary, life_support_type):
         bit1, bit2 = 1, 0
     elif life_support_type == "CO2":
         bit1, bit2 = 0, 1
+
     sequence_length = len(binary[0])
     binary_length = len(binary.transpose()[0])
     i = 0
+
     while True:
         if binary_length == 1:
             break
