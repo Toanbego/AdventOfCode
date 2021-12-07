@@ -18,8 +18,10 @@ def task2(data):
 
 def main():
     puzzle_input = read_data()
-    print(f"Solution to task 1: {task1(puzzle_input)}")
-    print(f"Solution to task 2: {task2(puzzle_input)}")
+    if task1(read_data("test_input.txt")) == 5:
+        print(f"Solution to task 1: {task1(puzzle_input)}")
+    if task2(read_data("test_input.txt")) == 12:
+        print(f"Solution to task 2: {task2(puzzle_input)}")
 
 
 main()

@@ -36,12 +36,14 @@ def create_python_file(day):
 
 
 def create_puzzle_input(day):
-    filename = 'puzzle_input.txt'
 
-    if f'{filename}' in os.listdir(f'{os.getcwd()}/Day {day}'):
+
+    if f'puzzle_input' in os.listdir(f'{os.getcwd()}/Day {day}'):
         return
 
-    python_file = open(f'{os.getcwd()}/Day {day}/{filename}', 'w')
+    python_file = open(f'{os.getcwd()}/Day {day}/puzzle_input.txt', 'w')
+    python_file.writelines('Paste input here')
+    python_file = open(f'{os.getcwd()}/Day {day}/test_input.txt', 'w')
     python_file.writelines('Paste input here')
 
 
