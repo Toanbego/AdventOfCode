@@ -1,18 +1,7 @@
 import re
-import argparse
 import sys
 import os
-import json
 import requests as req
-import urllib.request
-import datetime
-
-
-def get_input():
-    """
-    Function to automatically get input and save to file
-    :return:
-    """
 
 
 def create_directory(day):
@@ -35,14 +24,22 @@ def create_python_file(day):
             python_file.writelines(line)
 
 
+def get_input(day):
+    """
+    Function to automatically get input and save to file
+    :return:
+    """
+    cookies = {"session": open("credentials", "r").readlines()[0]}
+    data = req.get(f'https://adventofcode.com/2021/day/{day}/input', cookies=cookies)
+    return data.text
+
+
 def create_puzzle_input(day):
-
-
     if f'puzzle_input' in os.listdir(f'{os.getcwd()}/Day {day}'):
         return
 
     python_file = open(f'{os.getcwd()}/Day {day}/puzzle_input.txt', 'w')
-    python_file.writelines('Paste input here')
+    python_file.writelines(get_input(day))
     python_file = open(f'{os.getcwd()}/Day {day}/test_input.txt', 'w')
     python_file.writelines('Paste input here')
 
