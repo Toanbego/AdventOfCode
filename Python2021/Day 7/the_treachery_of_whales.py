@@ -12,13 +12,8 @@ def task1(data):
     """Write the code for task 1 here"""
     crab_positions = np.array(data[0].split(",")).astype(int)
     fuel_comparison = []
-
-    # Loop through all potential positions
     for pos in range(int(np.min(crab_positions)), int(np.max(crab_positions))):
-        # Check fuel consumption for each crab towards pos and add to list
-        fuel_consumption = sum([abs(pos-i) for i in crab_positions])
-        fuel_comparison.append(fuel_consumption)
-
+        fuel_comparison.append(sum([abs(pos-i) for i in crab_positions]))
     return min(fuel_comparison)
 
 
@@ -26,11 +21,8 @@ def task2(data):
     """Write the code for task 2 here"""
     crab_positions = np.array(data[0].split(",")).astype(int)
     fuel_comparison = []
-    # Loop through all potential positions
     for pos in range(int(np.min(crab_positions)), int(np.max(crab_positions))):
-        # Same as task 1, but use Gauss formula for finding consecutive sum between 2 numbers: (n/2)*(n1+n2)
-        fuel_consumption = sum([int((abs(pos-i)/2)*(1+(abs(pos-i)))) for i in crab_positions])
-        fuel_comparison.append(fuel_consumption)
+        fuel_comparison.append(sum([int((abs(pos-i)/2)*(1+(abs(pos-i)))) for i in crab_positions])) # (n/2)*(n1+n2)
     return min(fuel_comparison)
 
 
