@@ -83,9 +83,6 @@ def task2(data):
     return sum(puzzle_answer)
 
 
-
-
-
 def main():
     puzzle_input = read_data()
     if task1(read_data("test_input.txt")) == 26:
@@ -94,4 +91,3 @@ def main():
         print(f"Solution to task 2: {task2(puzzle_input)}")
 
 
-main()

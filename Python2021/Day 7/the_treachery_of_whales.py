@@ -7,12 +7,12 @@ def read_data(path="puzzle_input.txt"):
     fin = open(path, "r")
 
     lines = [line.strip() for line in fin.readlines() if line.strip()]
-    return lines
+    return np.array(lines[0].split(",")).astype(int)
 
 
 def task1(data):
     """Write the code for task 1 here"""
-    crab_positions = np.array(data[0].split(",")).astype(int)
+    crab_positions = data
     fuel_comparison = []
     for pos in range(int(np.min(crab_positions)), int(np.max(crab_positions))):
         fuel_comparison.append(sum([abs(pos-i) for i in crab_positions]))
@@ -21,7 +21,7 @@ def task1(data):
 
 def task2(data):
     """Write the code for task 2 here"""
-    crab_positions = np.array(data[0].split(",")).astype(int)
+    crab_positions = data
     fuel_comparison = []
     for pos in range(int(np.min(crab_positions)), int(np.max(crab_positions))):
         fuel_comparison.append(sum([int((abs(pos-i)/2)*(1+(abs(pos-i)))) for i in crab_positions])) # (n/2)*(n1+n2)
