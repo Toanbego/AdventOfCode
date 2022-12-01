@@ -5,13 +5,13 @@ def read_data(path="puzzle_input.txt"):
     """Reads puzzle input"""
     fin = open(path, "r")
     lines = [line.strip() for line in fin.readlines() if line.strip()]
-    return lines
+    return Counter(np.sort(np.array([int(i) for i in lines[0].split(",")])))
 
 
 def task1(data):
     """Write the code for task 1 here"""
     # Create Model
-    population_model = Counter(np.sort(np.array([int(i) for i in data[0].split(",")])))
+    population_model = data
     for key in range(10):
         if key not in population_model:
             population_model[key] = 0
@@ -36,7 +36,7 @@ def task1(data):
 def task2(data):
     """Write the code for task 2 here"""
     # Create Model
-    population_model = Counter(np.sort(np.array([int(i) for i in data[0].split(",")])))
+    population_model = data
     for key in range(10):
         if key not in population_model:
             population_model[key] = 0

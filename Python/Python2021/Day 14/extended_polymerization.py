@@ -1,8 +1,7 @@
-import numpy as np
 from collections import Counter
 
-class Data:
 
+class Data:
     def __init__(self, inputs):
         """Reads puzzle input"""
         self.inputs = inputs
@@ -13,8 +12,8 @@ class Data:
             else:
                 self.data[f"test_input{i}"] = self.parse_data(inputs[i])
 
-
     def parse_data(self, path):
+        """Parses data tailored to today's puzzle"""
         fin = open(path, "r")
         lines = [line.strip() for line in fin.readlines() if line.strip()]
         template = lines[0]
@@ -33,10 +32,11 @@ class Polymer:
         self.letter_count = Counter(self.template)
 
     def get_pairs(self):
+        """Gets initial pairs for the template"""
         return [self.template[i-1] + self.template[i] for i in range(1, len(self.template))]
 
-
     def insert_polymers(self):
+        """Inserts polymers based on template, then rewrites the ols template with new one"""
         new_template = ""
         for pair in self.pairs:
             new_template += pair[0] + self.insertions[pair]
@@ -48,9 +48,9 @@ class Polymer:
         Iterate through existing pairs
         for x each pair
         Then Add:
-              1. Add new pairs to paircount
+              1. Add the two new pairs to pair_count
               2. Add x=pair_count of new letters to to letter count
-        :return:
+              3. Remove current pair from count, since its gets replace by two new
         """
         for pair in pair_count:
             new_pair1, new_pair2 = pair[0] + self.insertions[pair], self.insertions[pair] + pair[1]

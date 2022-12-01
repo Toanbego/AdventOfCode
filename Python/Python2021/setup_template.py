@@ -9,6 +9,10 @@ def create_directory(day):
         return
     else:
         os.mkdir(f'{os.getcwd()}/Day {day}')
+    if f'Day {day}' in os.listdir(os.getcwd()):
+        return
+    else:
+        os.mkdir(f'{os.getcwd()}/Day {day}')
 
 
 def create_python_file(day):
