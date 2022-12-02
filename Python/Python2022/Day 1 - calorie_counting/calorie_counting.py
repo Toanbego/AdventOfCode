@@ -1,34 +1,16 @@
 import numpy as np
 
-
 class Data:
 
     def __init__(self, inputs):
         """Reads puzzle input"""
-        self.inputs = inputs
-        self.data = {}
-        for i in range(len(inputs)):
-            if "puzzle" not in list(self.data.keys()):
-                self.data["puzzle"] = self.parse_data(inputs[i])
-            else:
-                self.data[f"test_input{i}"] = self.parse_data(inputs[i])
+        self.data = {"test_input": self.parse_data(inputs[1])}
+        self.data[f"puzzle"] = self.parse_data(inputs[0])
 
     def parse_data(self, path):
-        """"""
+        """This parses data"""
         file = open(path, "r")
-        lines = [line for line in file.readlines()]
-        items, elves = [], []
-
-        for idx, line in enumerate(lines):
-
-            if line != "\n":
-                items.append(int(line.strip()))
-
-            if idx == len(lines)-1 or line == "\n":
-                elves.append(items)
-                items = []
-
-        return elves
+        return list(map(lambda x: [int(i) for i in x.split("\n")], file.read().split("\n\n")))
 
 
 def task1(data):
@@ -42,14 +24,19 @@ def task2(data):
     calories.sort()
     return sum(calories[-3:])
 
+def oneliner(path):
+    with open(path, 'r') as file:
+        return sum(list(sorted([sum(int(x) for x in line.split('\n') if x != '') for line in file.read().split('\n\n')], reverse=True))[0:3])
 
 def main():
+    print(oneliner("puzzle_input.txt"))
+    exit()
     puzzle_input = Data(["puzzle_input.txt", "test_input.txt"])
 
-    assert task1(puzzle_input.data["test_input1"]) == 24000
+    assert task1(puzzle_input.data["test_input"]) == 24000
     print(f"Solution to task 1: {task1(puzzle_input.data['puzzle'])}")
 
-    assert task2(puzzle_input.data["test_input1"]) == 45000, "Failed test"
+    assert task2(puzzle_input.data["test_input"]) == 45000
     print(f"Solution to task 2: {task2(puzzle_input.data['puzzle'])}")
 
 

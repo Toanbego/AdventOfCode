@@ -6,15 +6,11 @@ import datetime
 
 
 def create_directory(day, year, python_file_name):
-
-    if f'Python{year}' in os.listdir(os.getcwd()):
-        return
-    else:
+    if f'Python{year}' not in os.listdir(os.getcwd()):
         os.mkdir(f'{os.getcwd()}/Python{year}')
-        if f'/Day {day}' in os.listdir(f"{os.getcwd()}/Python{year}"):
-            return
-        else:
-            os.mkdir(f'{os.getcwd()}/Python{year}/Day {day} - {python_file_name}')
+
+    if f'Day {day} - {python_file_name}' not in os.listdir(f"{os.getcwd()}/Python{year}"):
+        os.mkdir(f'{os.getcwd()}/Python{year}/Day {day} - {python_file_name}')
 
 
 def create_python_file(day, year, python_file_name):
