@@ -9,7 +9,34 @@ class Data:
 
     def parse_data(self, path):
         """This parses data"""
-        file = open(path, "r")
+        file = open("puzzle_input.txt", "r")
+
+        # Splitte opp i alver
+        data = file.read().split("\n\n")
+
+        # Splitte opp listene i items
+        data = [element.split("\n") for element in data]
+
+        # Konverter strings til integer
+        for idx1 in range(len(data)):
+            for idx2 in range(len(data[idx1])):
+                data[idx1][idx2] = int(data[idx1][idx2])
+
+        # Summer hvert element
+        for idx1 in range(len(data)):
+            data[idx1] = sum(data[idx1])
+
+        # Get highest calorie count
+        print(max(data))
+
+        # Sort data
+        data.sort()
+
+        # Fetch last three elements and sum them up
+        print(sum(data[-3:]))
+
+
+
         return list(map(lambda x: [int(i) for i in x.split("\n")], file.read().split("\n\n")))
 
 
@@ -29,8 +56,7 @@ def oneliner(path):
         return sum(list(sorted([sum(int(x) for x in line.split('\n') if x != '') for line in file.read().split('\n\n')], reverse=True))[0:3])
 
 def main():
-    print(oneliner("puzzle_input.txt"))
-    exit()
+
     puzzle_input = Data(["puzzle_input.txt", "test_input.txt"])
 
     assert task1(puzzle_input.data["test_input"]) == 24000

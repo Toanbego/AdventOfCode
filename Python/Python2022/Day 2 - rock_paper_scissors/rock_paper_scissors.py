@@ -10,17 +10,18 @@ class Data:
     def parse_data(self, path):
         """This parses data"""
         file = open(path, "r")
-        return [line.strip().split(" ") for line in file.readlines()]
+        return [line.strip() for line in file.readlines()]
 
 
 def task1(data):
     """Write the code for task 1 here"""
-
+    
     game_rules = {'A X': 3, 'B Y': 3, 'C Z': 3,
                   'A Y': 6, 'B Z': 6, 'C X': 6,
                   'A Z': 0, 'B X': 0, 'C Y': 0}
     play_score = {'X': 1, 'Y': 2, 'Z': 3}
-    return sum([game_rules[" ". join(play)] + play_score[play[1]] for play in data])
+
+    return sum([game_rules[play] + play_score[play[2]] for play in data])
 
 
 def task2(data):
@@ -31,7 +32,7 @@ def task2(data):
     play_score = {'X': 1, 'Y': 2, 'Z': 3}
     win_score = {'X': 0, 'Y': 3, 'Z': 6}
 
-    return sum([win_score[play[1]] + play_score[rule_table[" ".join(play)]] for play in data])
+    return sum([win_score[play[2]] + play_score[rule_table[play]] for play in data])
 
 
 def main():
