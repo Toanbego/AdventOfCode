@@ -40,7 +40,7 @@ def find_badges(data):
 
         # Fetch group
         c1, c2, c3 = data[data.index(i)-2:data.index(i)+1]
-        
+
         # Find match and append to list
         matches = list(set(c1) & set(c2) & set(c3))
         priority_list.append(matches)
@@ -77,8 +77,9 @@ def task1_oneliner(data):
     :return:
     """
     alphabet = string.ascii_lowercase + string.ascii_uppercase
-    priority_list = [list(set(items[:(len(items) // 2)]) & set(items[(len(items) // 2):]))[0] for items in data]
-    return sum([[alphabet.index(match) + 1 for match in matches][0] for matches in priority_list])
+    return sum([[alphabet.index(match) + 1 for match in matches][0]
+                for matches in [list(set(items[:(len(items) // 2)]) &
+                                     set(items[(len(items) // 2):]))[0] for items in data]])
 
 
 def task2_oneliner(data):
@@ -88,10 +89,10 @@ def task2_oneliner(data):
     :return:
     """
     alphabet = string.ascii_lowercase + string.ascii_uppercase
-    priority_list = [list(set(data[data.index(i)-2:data.index(i)+1][0]) &
-                          set(data[data.index(i)-2:data.index(i)+1][1]) &
-                          set(data[data.index(i)-2:data.index(i)+1][2])) for i in data[2:len(data):3]]
-    return sum([[alphabet.index(match) + 1 for match in matches][0] for matches in priority_list])
+    return sum([[alphabet.index(match) + 1 for match in matches][0]
+                for matches in [list(set(data[data.index(i)-2:data.index(i)+1][0]) &
+                                     set(data[data.index(i)-2:data.index(i)+1][1]) &
+                                     set(data[data.index(i)-2:data.index(i)+1][2])) for i in data[2:len(data):3]]])
 
 
 
