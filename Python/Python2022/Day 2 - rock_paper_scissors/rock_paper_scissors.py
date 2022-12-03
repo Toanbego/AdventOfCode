@@ -15,10 +15,12 @@ class Data:
 
 def task1(data):
     """Write the code for task 1 here"""
-    
-    game_rules = {'A X': 3, 'B Y': 3, 'C Z': 3,
-                  'A Y': 6, 'B Z': 6, 'C X': 6,
-                  'A Z': 0, 'B X': 0, 'C Y': 0}
+    # Define game rules
+    game_rules = {'A X': 3, 'B Y': 3, 'C Z': 3,     # This defines a draw
+                  'A Y': 6, 'B Z': 6, 'C X': 6,     # This defines a win
+                  'A Z': 0, 'B X': 0, 'C Y': 0}     # This defines a lose
+
+    # Defines points for either Rock (X), Paper (Y) or Scissor (Z)
     play_score = {'X': 1, 'Y': 2, 'Z': 3}
 
     return sum([game_rules[play] + play_score[play[2]] for play in data])
@@ -26,9 +28,12 @@ def task1(data):
 
 def task2(data):
     """Write the code for task 2 here"""
+    # Define what we have to play to win, lose or draw
     rule_table = {'A X': 'Z', 'B X': 'X', 'C X': 'Y',
                   'A Y': 'X', 'B Y': 'Y', 'C Y': 'Z',
                   'A Z': 'Y', 'B Z': 'Z', 'C Z': 'X'}
+
+    # Play and win scores
     play_score = {'X': 1, 'Y': 2, 'Z': 3}
     win_score = {'X': 0, 'Y': 3, 'Z': 6}
 
