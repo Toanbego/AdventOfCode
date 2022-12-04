@@ -29,6 +29,7 @@ def find_matches(data):
 
     return priority_list
 
+
 def find_badges(data):
     """Finds the common item for each group of three
     return list(map(lambda x: [int(i) for i in x.split("\n")], file.read().split("\n\n")))
