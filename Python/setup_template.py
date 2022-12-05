@@ -21,6 +21,9 @@ def create_python_file(day, year, python_file_name):
     python_file = open(f'{os.getcwd()}/Python{year}/Day {day} - {python_file_name}/{python_file_name}.py', 'w')
     with open('template.txt', 'r') as f:
         for line in f.readlines():
+            if "https://adventofcode.com/{year}/day/{day}/answer" in line:
+                python_file.writelines(f"        url=f'https://adventofcode.com/{year}/day/{day}/answer',\n")
+                continue
             python_file.writelines(line)
 
 

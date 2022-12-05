@@ -2,22 +2,18 @@ import numpy as np
 
 
 class Data:
+    class Data:
 
-    def __init__(self, inputs):
-        """Reads puzzle input"""
-        self.inputs = inputs
-        self.data = {}
-        for i in range(len(inputs)):
-            if "puzzle" not in list(self.data.keys()):
-                self.data["puzzle"] = self.parse_data(inputs[i])
-            else:
-                self.data[f"test_input{i}"] = self.parse_data(inputs[i])
+        def __init__(self, inputs):
+            """Reads puzzle input"""
+            self.data = {"test_input": self.parse_data(inputs[1])}
+            self.data[f"puzzle"] = self.parse_data(inputs[0])
 
-    def parse_data(self):
+        def parse_data(self, path):
+            """This parses data"""
+            file = open("puzzle_input.txt", "r")
+            return list(map(lambda x: [int(i) for i in x.split("\n")], file.read().split("\n\n")))
 
-        fin = open(path, "r")
-        lines = [line.strip() for line in fin.readlines() if line.strip()]
-        return "" # Add rest of parsing here
 
 def task1(data):
     """Write the code for task 1 here"""

@@ -1,20 +1,6 @@
 import numpy as np
 import requests as req
 
-
-def submit_answer(answer, level, day, year):
-    cookies = {"session": open("../../credentials", "r").readlines()[0]}
-    response = req.post(
-        url=f'https://adventofcode.com/{year}/day/{day}/answer',
-        cookies=cookies,
-        data={"level": {level}, "answer": {answer}},
-    )
-    if "That's not the right answer" in response.text:
-        print(f"{answer} is not correct level {level}")
-    else:
-        print(f"{answer} is the correct answer for level {level}")
-        exit()
-
 class Data:
 
     def __init__(self, inputs):
@@ -33,16 +19,23 @@ def task1(data):
 def task2(data):
     """Write the code for task 2 here"""
 
+def submit_answer(answer, level, day, year):
+    cookies = {"session": open("../../credentials", "r").readlines()[0]}
+    response = req.post(
+        url=f'https://adventofcode.com/2018/day/4/answer',
+        cookies=cookies,
+        data={"level": {level}, "answer": {answer}},
+    )
 
 
 def main():
     puzzle_input = Data(["puzzle_input.txt", "test_input.txt"])
 
     assert task1(puzzle_input.data["test_input"]) == ""  # Set example answer here
-    submit_answer(task1(puzzle_input.data['puzzle']), 1)
+    print(f"Solution to task 1: {task1(puzzle_input.data['puzzle'])}")
 
     assert task2(puzzle_input.data["test_input"]) == ""  # Set example answer here
-    submit_answer(task2(puzzle_input.data['puzzle']), 2)
+    print(f"Solution to task 2: {task2(puzzle_input.data['puzzle'])}")
 
 
 main()
