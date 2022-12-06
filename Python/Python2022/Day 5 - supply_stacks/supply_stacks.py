@@ -11,7 +11,6 @@ def submit_answer(answer, level):
         exit()
     else:
         print(f"{answer} is the correct answer for level {level}")
-        exit()
 
 
 class Data:
@@ -43,8 +42,7 @@ def task1(data):
     """Write the code for task 1 here"""
     stack_conf, move_list = data[0], data[1]
     # Loop through move list
-    for move in move_list:
-        nr_of_stacks, from_stack, to_stack = move
+    for nr_of_stacks, from_stack, to_stack in move_list:
         # Move one stack at a time
         for i in range(nr_of_stacks):
             stack_conf[to_stack] = stack_conf[from_stack][0] + stack_conf[to_stack]
@@ -53,19 +51,13 @@ def task1(data):
     return "".join([stack_conf[key][0] for key in stack_conf.keys()])
 
 
-
-
 def task2(data):
     """Write the code for task 2 here"""
     stack_conf, move_list = data[0], data[1]
     # Loop through move list
-    for move in move_list:
-        nr_of_stacks, from_stack, to_stack = move
-        # Move one stack at a time
-
+    for nr_of_stacks, from_stack, to_stack in move_list:
         stack_conf[to_stack] = stack_conf[from_stack][:nr_of_stacks] + stack_conf[to_stack]
         stack_conf[from_stack] = stack_conf[from_stack][nr_of_stacks:]
-
 
     return "".join([stack_conf[key][0] for key in stack_conf.keys()])
 
