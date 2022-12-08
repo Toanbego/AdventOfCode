@@ -2,7 +2,7 @@ import numpy as np
 import requests as req
 
 
-def submit_answer(answer, level, day, year):
+def submit_answer(answer, level):
     cookies = {"session": open("../../credentials", "r").readlines()[0]}
     response = req.post(
         url=f'https://adventofcode.com/{year}/day/{day}/answer',
@@ -13,7 +13,7 @@ def submit_answer(answer, level, day, year):
         print(f"{answer} is not correct level {level}")
     else:
         print(f"{answer} is the correct answer for level {level}")
-        exit()
+
 
 class Data:
 
