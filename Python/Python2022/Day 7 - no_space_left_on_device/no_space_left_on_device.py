@@ -45,57 +45,63 @@ def get_size(data, dir_path, dir_list, file_list, directory_size, idx):
 def task1(data):
     """Write the code for task 1 here"""
 
-    dir_path = ""
-    directory_size = {}
+    dir_path = "/"
+    directory_size = {"/": 0}
     for idx, line in enumerate(data):
-
+        if line == "$ cd /": continue
         if line.startswith("$ cd") and "$ cd .." not in line:
-            dir_path += "/" + line.split(" ")[-1]
+            dir_path += " " + line.split(" ")[-1]
             if line.split(" ")[-1] not in directory_size.keys():
                 directory_size[line.split(" ")[-1]] = 0
         elif line == "$ cd ..":
-            dir_path = dir_path.rsplit("/", 1)[0]
-            # if dir_path == "": dir_path+="/"
+            dir_path = dir_path.rsplit(" ", 1)[0]
         elif line.startswith("$ ls"): continue
         elif line.startswith("dir"): continue
         else:
-            print(idx)
-            if dir_path == "//": continue
             size = int(line.split(" ")[0])
-            dir = dir_path.split("/")[-1]
-
-
+            dir = dir_path.split(" ")[-1]
             directory_size[dir] += size
-            parents = dir_path.split("/")[:-1]
+            parents = dir_path.split(" ")[:-1]
             for parent in parents:
-                if parent != "":
-                    directory_size[parent] += size
+                directory_size[parent] += size
 
     return sum(v for v in directory_size.values() if v <= 100000)
-    print()
-    # dir_list = []
-    # file_list = []
-    # idx = 0
-    # # graph = {}
-    # # graph_path = create_graph(data, dir_path, graph)
-    # get_size(data, dir_path, dir_list, file_list, directory_size, idx=0)
+
 
 
 def task2(data):
     """Write the code for task 2 here"""
+    dir_path = "/"
+    directory_size = {"/": 0}
+    for idx, line in enumerate(data):
+        if line == "$ cd /": continue
+        if line.startswith("$ cd") and "$ cd .." not in line:
+            dir_path += " " + line.split(" ")[-1]
+            if line.split(" ")[-1] not in directory_size.keys():
+                directory_size[line.split(" ")[-1]] = 0
+        elif line == "$ cd ..":
+            dir_path = dir_path.rsplit(" ", 1)[0]
+        elif line.startswith("$ ls"): continue
+        elif line.startswith("dir"): continue
+        else:
+            size = int(line.split(" ")[0])
+            dir = dir_path.split(" ")[-1]
+            directory_size[dir] += size
+            parents = dir_path.split(" ")[:-1]
+            for parent in parents:
 
+                directory_size[parent] += size
+
+    return max(v for v in directory_size.values() if v <= 30000000)
 
 
 def main():
     puzzle_input = Data(["puzzle_input.txt", "test_input.txt"])
 
-    # assert task1(puzzle_input.data["test_input"]) == 95437  # Set example answer here
-    # task1(puzzle_input.data['puzzle'])
-    # assert task1(puzzle_input.data["test_input"]) == 95437
+    print(task1(puzzle_input.data['test_input']))
     print(task1(puzzle_input.data['puzzle']))
-
-    # assert task2(puzzle_input.data["test_input"]) == "Set example answer here"
-    # submit_answer(task2(puzzle_input.data['puzzle']), 2)
+    print(task2(puzzle_input.data['test_input']))
+    print(task2(puzzle_input.data['puzzle']))
 
 
 main()
