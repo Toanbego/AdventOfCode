@@ -93,8 +93,8 @@ def task2(data):
                         tail_pos[i][1] = tail_pos[i - 1][1] + (-1*convert_dir[direction])
                         tail_pos[i][0] = tail_pos[i - 1][0]
 
-            if tail_pos[-1] not in visited_pos:
-                visited_pos.append([tail_pos[-1][0], tail_pos[-1][1]])
+                if tail_pos[-1] not in visited_pos:
+                    visited_pos.append([tail_pos[-1][0], tail_pos[-1][1]])
 
     return sum([1 for i in visited_pos])
 
@@ -103,10 +103,10 @@ def task2(data):
 def main():
     puzzle_input = Data(["puzzle_input.txt", "test_input.txt"])
 
-    assert task1(puzzle_input.data["test_input"]) == 13  # Set example answer here
+    # assert task1(puzzle_input.data["test_input"]) == 13  # Set example answer here
     submit_answer(task1(puzzle_input.data['puzzle']), 1)
 
-    print(task2(puzzle_input.data["puzzle"]))  # Set example answer here
+    print(task2(puzzle_input.data["test_input"]))  # Set example answer here
     submit_answer(task2(puzzle_input.data['puzzle']), 2)
 
 
