@@ -40,21 +40,19 @@ class CathComp():
     def increment_cycle(self, instruction):
         if "addx" in instruction:
             self.render_image(instruction)
+            self.process_cpu(instruction)
+            self.addx(int(instruction.split(" ")[1]))
         if "noop" in instruction:
             self.render_image(instruction)
-
+            self.process_cpu(instruction)
 
     def addx(self, value):
         self.X += value
 
-    def process_cpu(self):
-        for ops in self.operations:
-            self.increment_cycle(ops)
-            if self.cycle - self.cycle % 20 not in self.signal_strength.keys():
-                if (self.cycle - self.cycle % 20) % 40 != 0:
-                    self.signal_strength[self.cycle - self.cycle % 20] = self.X * (self.cycle - self.cycle % 20)
-            if "addx" in ops:
-                self.addx(int(ops.split(" ")[1]))
+    def process_cpu(self, ops):
+        if self.cycle - self.cycle % 20 not in self.signal_strength.keys():
+            if (self.cycle - self.cycle % 20) % 40 != 0:
+                self.signal_strength[self.cycle - self.cycle % 20] = self.X * (self.cycle - self.cycle % 20)
 
     def render_image(self, ops):
         draw_count = 2 if 'addx' in ops else 1
@@ -71,14 +69,17 @@ class CathComp():
 def task1(data):
     """Write the code for task 1 here"""
     cathcomp = CathComp(data)
-    cathcomp.process_cpu()
+    for operation in data:
+        cathcomp.increment_cycle(operation)
     return sum(cathcomp.signal_strength.values())
 
 
 def task2(data):
     """Write the code for task 2 here"""
     cathcomp = CathComp(data)
-    cathcomp.process_cpu()
+    for operation in data:
+        cathcomp.increment_cycle(operation)
+
     for row in cathcomp.grid:
         print(*row)
 
@@ -89,7 +90,6 @@ def main():
     assert task1(puzzle_input.data["test_input"]) == 13140  # Set example answer here
     submit_answer(task1(puzzle_input.data['puzzle']), 1)
 
-    task2(puzzle_input.data["test_input"])
     task2(puzzle_input.data["puzzle"])
 
 
