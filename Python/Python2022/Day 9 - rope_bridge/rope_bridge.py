@@ -37,17 +37,10 @@ def check_adjacent(head_pos, tail_pos):
     else:
         return True
 
-# def get_adjacent_points(y, x):
-#     adjacent = []
-#     adjacent_idx_x, adjacent_idx_y = [-1, 1, 0, 0, -1, 1, 1, -1], [0, 0, -1, 1, -1, 1, -1, 1]
-#     for dx, dy in zip(adjacent_idx_x, adjacent_idx_y):
-#         adjacent.append([y + dy, x + dx])
-#     return adjacent
 
 def task1(data):
     """Write the code for task 1 here"""
     tail_pos = [[0, 0], [0, 0]]
-    head_pos = [0, 0]
     previous_pos = [0, 0]
     visited_pos = [[0, 0]]
     for direction, moves in data:
@@ -81,7 +74,6 @@ def task2(data):
             elif direction == 'U' or direction == 'D':
                 tail_pos[0][0] += convert_dir[direction]
 
-            adjacent_tails = [check_adjacent(tail_pos[idx-1], tail_pos[idx]) for idx in range(1, len(tail_pos))]
             for i in range(1, len(tail_pos)):
                 if check_adjacent(tail_pos[i-1], tail_pos[i]):
                     continue

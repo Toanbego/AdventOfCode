@@ -40,16 +40,16 @@ class CathComp():
     def increment_cycle(self, instruction):
         if "addx" in instruction:
             self.render_image(instruction)
-            self.process_cpu(instruction)
+            self.process_cpu()
             self.addx(int(instruction.split(" ")[1]))
         if "noop" in instruction:
             self.render_image(instruction)
-            self.process_cpu(instruction)
+            self.process_cpu()
 
     def addx(self, value):
         self.X += value
 
-    def process_cpu(self, ops):
+    def process_cpu(self):
         if self.cycle - self.cycle % 20 not in self.signal_strength.keys():
             if (self.cycle - self.cycle % 20) % 40 != 0:
                 self.signal_strength[self.cycle - self.cycle % 20] = self.X * (self.cycle - self.cycle % 20)
@@ -79,7 +79,6 @@ def task2(data):
     cathcomp = CathComp(data)
     for operation in data:
         cathcomp.increment_cycle(operation)
-
     for row in cathcomp.grid:
         print(*row)
 
