@@ -5,7 +5,7 @@ import requests as req
 def submit_answer(answer, level):
     cookies = {"session": open("../../credentials", "r").readlines()[0]}
     response = req.post(
-        url=f'https://adventofcode.com/{year}/day/{day}/answer',
+        url=f'https://adventofcode.com/2023/day/6/answer',
         cookies=cookies,
         data={"level": {level}, "answer": {answer}},
     )
@@ -26,13 +26,46 @@ class Data:
         file = open(path, "r")
         return [line.strip() for line in file.readlines()]
 
+
+
 def task1(data):
     """Write the code for task 1 here"""
+    # g(x) = x*(t-x)
+    # Find g(x) >= d and g(x) <= d
+
+
+    race_time = [int(i) for i in data[0].split(" ") if str.isdigit(i)]
+    race_distance = [int(i) for i in data[1].split(" ") if str.isdigit(i)]
+    margins = []
+    for t, d in zip(race_time, race_distance):
+        t_rest = t
+        t_hold = 0
+        win_states = 0
+        for i in range(t):
+            t_hold += 1
+            t_rest -= 1
+            speed = t_hold * t_rest
+            if speed > d:
+                win_states += 1
+        margins.append(win_states)
+
+    return np.prod(margins)
 
 
 def task2(data):
     """Write the code for task 2 here"""
-
+    race_time = int("".join([i for i in data[0].split(" ") if str.isdigit(i)]))
+    race_distance = int("".join([i for i in data[1].split(" ") if str.isdigit(i)]))
+    t_rest = race_time
+    t_hold = 0
+    win_states = 0
+    for i in range(race_time):
+        t_hold += 1
+        t_rest -= 1
+        speed = t_hold * t_rest
+        if speed > race_distance:
+            win_states += 1
+    return win_states
 
 
 def main():

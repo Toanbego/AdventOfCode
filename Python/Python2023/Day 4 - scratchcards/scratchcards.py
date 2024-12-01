@@ -2,6 +2,10 @@ import numpy as np
 import requests as req
 
 
+
+
+exit()
+
 def submit_answer(answer, level):
     cookies = {"session": open("../../credentials", "r").readlines()[0]}
     response = req.post(

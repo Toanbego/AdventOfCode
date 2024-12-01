@@ -5,7 +5,7 @@ import requests as req
 def submit_answer(answer, level):
     cookies = {"session": open("../../credentials", "r").readlines()[0]}
     response = req.post(
-        url=f'https://adventofcode.com/{year}/day/{day}/answer',
+        url=f'https://adventofcode.com/2024/day/1/answer',
         cookies=cookies,
         data={"level": {level}, "answer": {answer}},
     )
@@ -28,15 +28,30 @@ class Data:
 
 def task1(data):
     """Write the code for task 1 here"""
+    # Create two lists, sort them in ascending order, find diff then sum answer
+    l1, l2 = [], []
+    for i in data:
+        l1.append(int(i.split()[0])), l2.append(int(i.split()[1]))
+    l1.sort(), l2.sort()
+    answer = sum([abs(x-y) for x, y in zip(l1, l2)])
+    return answer
 
 
 def task2(data):
     """Write the code for task 2 here"""
+    l1, l2 = [], []
+    for i in data:
+        l1.append(int(i.split()[0])), l2.append(int(i.split()[1]))
+    l1.sort(), l2.sort()
+
+    similarity = sum([x*l2.count(x) for x in l1])
+    return similarity
 
 
 
 def main():
     puzzle_input = Data(["puzzle_input.txt", "test_input.txt"])
+
 
     print(task1(puzzle_input.data["test_input"]))
     print(task1(puzzle_input.data['puzzle']))
