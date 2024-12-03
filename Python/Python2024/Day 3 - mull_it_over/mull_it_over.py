@@ -1,11 +1,13 @@
 import numpy as np
 import requests as req
+import re
+from math import prod
 
 
 def submit_answer(answer, level):
     cookies = {"session": open("../../credentials", "r").readlines()[0]}
     response = req.post(
-        url=f'https://adventofcode.com/2024/day/1/answer',
+        url=f'https://adventofcode.com/2024/day/3/answer',
         cookies=cookies,
         data={"level": {level}, "answer": {answer}},
     )
@@ -28,29 +30,31 @@ class Data:
 
 def task1(data):
     """Write the code for task 1 here"""
-    # Create two lists, sort them in ascending order, find diff then sum answer
-    l1, l2 = [], []
-    for i in data:
-        l1.append(int(i.split()[0])), l2.append(int(i.split()[1]))
-    l1.sort(), l2.sort()
-    answer = sum([abs(x-y) for x, y in zip(l1, l2)])
-    return answer
+
+    data = "".join(data)
+    matches = re.findall("mul\((\d+)\,(\d+)\)", data)
+    mul_solution = [int(i[0]) * int(i[1]) for i in matches]
+    return sum(mul_solution)
+
 
 
 def task2(data):
     """Write the code for task 2 here"""
-    l1, l2 = [], []
-    for i in data:
-        l1.append(int(i.split()[0])), l2.append(int(i.split()[1]))
-    l1.sort(), l2.sort()
-    similarity = sum([x*l2.count(x) for x in l1])
-    return similarity
+    total = 0
+    data = "".join(data)
+    enabled = re.findall("(.*?)(?<=do\(\))(.*?)(?=(?:don't\(\)|$))", data)
+    for x in enabled:
+        for t in x:
+            if t.startswith("don't()"):
+                continue
+            mul_solution = [int(i[0]) * int(i[1]) for i in re.findall("mul\((\d+)\,(\d+)\)", t)]
+            total += sum(mul_solution)
+    return total
 
 
 
 def main():
     puzzle_input = Data(["puzzle_input.txt", "test_input.txt"])
-
 
     print(task1(puzzle_input.data["test_input"]))
     print(task1(puzzle_input.data['puzzle']))
