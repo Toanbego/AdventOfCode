@@ -3,20 +3,6 @@ import requests as req
 from collections import Counter 
 
 
-# lst = "123123123"
-# window = []
-# for size in range(1, int(len(lst)/2)):
-
-#     check = [lst[i:i + size] for i in range(0, len(lst), size)]
-#     if len(set(check)) == 1:
-#         print("add the sequence as invalid")
-#         print(check)
-#     s = ""
-
-
-
-
-
 def submit_answer(answer, level):
     cookies = {"session": open("../../credentials", "r").readlines()[0]}
     response = req.post(
@@ -48,14 +34,12 @@ def task1(data):
     for i in ranges:
         r1, r2 = int(i.split("-")[0]), int(i.split("-")[1])
 
-
+        # Loop through ranges
         for x in range(r1,r2+1):
-            
             x = str(x)
+            # Can only repeatd if number of digits are even 
             if len(x) % 2 == 0:
                 seq1, seq2 = x[0:int(len(x)/2)], x[int(len(x)/2):]
-                # if seq1 == seq2:
-                #     print(seq1 + "-" + seq2)
                 invalid_ids = invalid_ids + int(x) if seq1 == seq2 else invalid_ids + 0
             
     return invalid_ids
@@ -65,31 +49,23 @@ def task2(data):
     """Write the code for task 2 here"""
     ranges = data[0].split(",")
     invalid_ids = 0
+
     for i in ranges:
         r1, r2 = int(i.split("-")[0]), int(i.split("-")[1])
 
-
+        # Loop through ranges
         for x in range(r1,r2+1):
-            is_repeating = False
             x = str(x)
-       
+
+            # Divide sequence into evenly sized chunks up to at least the lafway point
             for size in range(1, int(len(x))):
-                if size > len(x)/2:
-                    break
-
                 window = [x[i:i + size] for i in range(0, len(x), size)]
+
+                # If all chunks are equal, the ID has repeated at least twice
                 if len(set(window)) == 1:
-                    is_repeating = True
-
-
-
-                if is_repeating:
                     invalid_ids += int(x)
                     break
-               
-
-
-            
+       
     return invalid_ids
 
 
