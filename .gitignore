@@ -20,3 +20,10 @@ Python/Day2/.idea/Day2.iml
 *.xml
 credentials
 Python/credentials
+# VS Code settings
+.vscode/
+
+# macOS Finder metadata
+.DS_Store
+.DS_Store?
+._*

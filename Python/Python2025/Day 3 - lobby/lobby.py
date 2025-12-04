@@ -33,10 +33,11 @@ class Data:
 def task1(data):
     """Write the code for task 1 here"""
     total_joltage = 0
+
+
     for i in data:
 
-        # Conver to list of int
-        #bank = np.array([int(i) for i in i], dtype=int)
+
         bank = [int(i) for i in i] 
 
         jolts = list(set(bank))
@@ -58,29 +59,7 @@ def task1(data):
 
     return total_joltage
 
-def get_jolts(bank):
-    jolts = list(set(bank))
-    jolts = sorted(jolts)
-    jolts.reverse()
 
-    return jolts
-
-
-def get_joltage_index(bank, jolts, joltage_per_bank):
-    leftover = 12
-    i = 0
-    while len(joltage_per_bank) <12:
-
-        if bank.index(jolts[i]) <= len(bank)-leftover:
-            joltage_per_bank.append(jolts[i])
-            jolts = get_jolts(bank[bank.index(jolts[i])+1:])
-            leftover -= 1
-        elif i == len(jolts)-1:
-            i = 0
-        else:
-            i += 1
-
-    return joltage_per_bank
 
 
 
@@ -88,20 +67,23 @@ def task2(data):
     """Write the code for task 2 here"""
     total_joltage = []
     for i in data:
+        bank_joltage = []
         bank = [int(i) for i in i] 
+        leftover = 12
+        n = len(bank)
+        drops = n-leftover
+        
+        for b in bank:
+            while bank_joltage and drops > 0 and bank_joltage[-1] < b:
+                bank_joltage.pop()
+                drops -= 1
+            bank_joltage.append(b)
+ 
+        total_joltage.append(int("".join(str(n) for n in bank_joltage[:leftover])))
+
 
         
-        jolts = get_jolts(bank)
-        
-        joltage_per_bank = []
-
-        joltage_per_bank = get_joltage_index(bank, jolts, joltage_per_bank)
-
-
-                        
-        
-        total_joltage.append(int("".join(str(n) for n in joltage_per_bank)))
-
+       
     
     return sum(total_joltage)
 
@@ -115,7 +97,6 @@ def main():
     print(task1(puzzle_input.data['puzzle']))
 
     print(task2(puzzle_input.data["test_input"]))  # Set example answer here
-    return
     print(task2(puzzle_input.data['puzzle']))
 
 
