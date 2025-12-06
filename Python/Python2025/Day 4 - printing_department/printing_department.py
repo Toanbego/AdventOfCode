@@ -33,7 +33,7 @@ def moore(arr, x, y):
     for dx in (-1, 0, 1):
         for dy in (-1, 0, 1):
             if dx == 0 and dy == 0:
-                continue  # hopp over selve punktet
+                continue  
 
             nx, ny = x + dx, y + dy
             if 0 <= nx < rows and 0 <= ny < cols:

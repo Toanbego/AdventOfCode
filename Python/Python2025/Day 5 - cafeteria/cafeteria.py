@@ -1,15 +1,11 @@
 import numpy as np
 import requests as req
-from copy import deepcopy
-
-
-
 
 
 def submit_answer(answer, level):
     cookies = {"session": open("../../credentials", "r").readlines()[0]}
     response = req.post(
-        url=f'https://adventofcode.com/2025/day/3/answer',
+        url=f'https://adventofcode.com/2025/day/5/answer',
         cookies=cookies,
         data={"level": {level}, "answer": {answer}},
     )
@@ -32,49 +28,50 @@ class Data:
 
 def task1(data):
     """Write the code for task 1 here"""
-    total_joltage = 0
-    for i in data:
 
-        bank = [int(i) for i in i] 
+    prods = [int(i) for i in data[data.index("")+1:]]
+    rngs = [[int(i.split("-")[0]), int(i.split("-")[1])] for i in data[:data.index("")]]
 
-        jolts = list(set(bank))
-        jolts = sorted(jolts)
-        jolts.reverse()
-        
-        max1 = jolts[0]
-        for idx, i in enumerate(jolts):
-            if bank.index(i) == len(bank)-1:
-                max1 = jolts[idx+1]
+
+    fresh_count = 0
+
+    for i in prods:
+
+
+        for r1, r2 in rngs:
+            
+            if r1 <= i <= r2:
+                fresh_count += 1
                 break
+    
+    return fresh_count
+
+     
+
+
+
         
-        max2 = max(bank[bank.index(max1)+1:])
 
-        total_joltage += int(str(max1) + str(max2))
-
-    return total_joltage
 
 
 def task2(data):
     """Write the code for task 2 here"""
-    total_joltage = []
-    for i in data:
-        bank = [int(i) for i in i] 
-        bank_joltage = []
-        leftover = 12
-        n = len(bank)
-        drops = n-leftover
-        
-        for b in bank:
-            while bank_joltage and drops > 0 and bank_joltage[-1] < b:
-                bank_joltage.pop()
-                drops -= 1
-            bank_joltage.append(b)
- 
-        total_joltage.append(int("".join(str(n) for n in bank_joltage[:leftover])))
+    rngs = [[int(i.split("-")[0]), int(i.split("-")[1])] for i in data[:data.index("")]]
+
+    rngs.sort()
+
+    fresh_ranges = []
+
+    for r1, r2 in rngs:
+        if not fresh_ranges or r1 > fresh_ranges[-1][1] + 1:
+            fresh_ranges.append([r1, r2])
+        else:
+            fresh_ranges[-1][1] = max(fresh_ranges[-1][1], r2)
+
     
-    return sum(total_joltage)
-
-
+    diff = sum(end - start + 1 for start, end in fresh_ranges)
+    return diff
+  
 
 def main():
     puzzle_input = Data(["puzzle_input.txt", "test_input.txt"])
