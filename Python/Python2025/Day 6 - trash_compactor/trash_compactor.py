@@ -29,13 +29,14 @@ class Data:
 
 def task1(data):
     """Write the code for task 1 here"""
-
+    # Get operators and numbers
     operators =[i.strip() for i in data[-1].split()]
     nums = [[int(x.strip()) for x in i.split()]for i in data[:-1]]
     
     # Convert to numpy array
     nums = np.array(nums).transpose()
 
+    # Iterate through problem
     answers = []
     for num, ops in zip(nums, operators):
         if ops == "+":
@@ -49,28 +50,33 @@ def task1(data):
 
 def task2(data):
     """Write the code for task 2 here"""
+
+    # Remove \n and reverse the input to read right to left
     data = [i.strip("\n") for i in data]
     lines = ["".join(reversed(i)) for i in data]
   
     columns = []
-    current_col = []
+    current_problem = []
 
     answers = []
 
+    # Loop through columns
     for idx in range(len(lines[0])):
-
-        num = [lines[x][idx] for x in range(len(lines[:-1]))]
-        current_col.append(int("".join(num).strip())) if len("".join(num).strip()) > 0 else None
         
+        # Create the number in the column and add to problem
+        num = [lines[x][idx] for x in range(len(lines[:-1]))]
+        current_problem.append(int("".join(num).strip())) if len("".join(num).strip()) > 0 else None
+        
+        # Check for operator. If operator, calculate problem
         if lines[-1][idx] == "*" or lines[-1][idx] == "+":
                 if lines[-1][idx] == "*":
-                    answers.append(np.prod(current_col))
+                    answers.append(np.prod(current_problem))
 
                 elif lines[-1][idx] == "+":
-                    answers.append(np.sum(current_col))
+                    answers.append(np.sum(current_problem))
 
-                columns.append(current_col)
-                current_col = []
+                columns.append(current_problem)
+                current_problem = []
 
     return sum(answers)
 
