@@ -46,12 +46,6 @@ def task1(data):
     
     return fresh_count
 
-     
-
-
-
-        
-
 
 
 def task2(data):

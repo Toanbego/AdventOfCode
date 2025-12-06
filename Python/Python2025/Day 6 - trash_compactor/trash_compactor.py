@@ -49,40 +49,28 @@ def task1(data):
 
 def task2(data):
     """Write the code for task 2 here"""
-
-    with open(data, "r") as f:
-        text = f.read()
-    
-    lines = text.splitlines()
-
-    positions = sorted({m.start() for line in lines for m in re.finditer(r"\S", line)})
-
+    data = [i.strip("\n") for i in data]
+    lines = ["".join(reversed(i)) for i in data]
+  
     columns = []
-    for i in range(len(positions)):
-        start = positions[i]
-        end = positions[i+1] if i < len(positions) - 1 else None
-        col = [line[start:end].rstrip() for line in lines]
-        columns.append(col)
-    
+    current_col = []
+
     answers = []
-    nums = []
-    for i in reversed(columns):
 
+    for idx in range(len(lines[0])):
+
+        num = [lines[x][idx] for x in range(len(lines[:-1]))]
+        current_col.append(int("".join(num).strip())) if len("".join(num).strip()) > 0 else None
         
+        if lines[-1][idx] == "*" or lines[-1][idx] == "+":
+                if lines[-1][idx] == "*":
+                    answers.append(np.prod(current_col))
 
-        nums.append(int("".join(i[:-1]).strip()))
+                elif lines[-1][idx] == "+":
+                    answers.append(np.sum(current_col))
 
-        # End of problem
-        if i[-1] == "*" or i[-1] == "+":
-            current_problem = np.array([i for i in nums])
-            if i[-1] == "*":
-                answers.append(np.prod(current_problem))
-
-            elif i[-1] == "+":
-                answers.append(np.sum(current_problem))
-
-            nums = []
-        
+                columns.append(current_col)
+                current_col = []
 
     return sum(answers)
 
@@ -94,8 +82,7 @@ def main():
     print(task1(puzzle_input.data["test_input"]))
     print(task1(puzzle_input.data['puzzle']))
 
-    print(task2("test_input.txt"))  # Set example answer here
-    print(task2('puzzle_input.txt'))
-
+    print(task2(puzzle_input.data["test_input"]))
+    print(task2(puzzle_input.data['puzzle']))
 
 main()
